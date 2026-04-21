@@ -7,6 +7,11 @@ export default function DocumentoPage({ params }: { params: { slug: string[] } }
   const title = slugTitle.charAt(0).toUpperCase() + slugTitle.slice(1);
   const context = params.slug.slice(0, -1).join(' / ').toUpperCase();
 
+  const tocItems = [
+    { id: "section-1", label: "1. Contexto do Documento" },
+    { id: "section-2", label: "2. Ações e Deliberações" }
+  ];
+
   return (
     <div className="flex flex-col min-h-screen">
       <TopBar />
@@ -61,7 +66,7 @@ export default function DocumentoPage({ params }: { params: { slug: string[] } }
         </div>
 
         {/* Right Sidebar (Table of Contents) */}
-        <TableOfContents />
+        <TableOfContents items={tocItems} />
       </div>
     </div>
   );
