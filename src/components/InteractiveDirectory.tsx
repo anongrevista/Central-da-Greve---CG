@@ -1,54 +1,44 @@
 "use client";
 
 import { useState } from 'react';
-import { Folder, FileText, ChevronRight } from 'lucide-react';
+import { Folder, FileText, ChevronRight, Inbox } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
-const MOCK_DATA = {
-  DCE: {
-    description: "Documentos gerais e comunicados unificados do Diretório Central.",
-    subfolders: {
-      Pautas: [
-        { title: "Pauta Unificada", href: "/documentos/dce/pautas/unificada" },
-        { title: "Reivindicações DCE", href: "/documentos/dce/pautas/reivindicacoes" },
-      ],
-      Informações: [
-        { title: "Comunicado Greve Geral", href: "/documentos/dce/informacoes/comunicado-greve" },
-      ],
-      ATAS: [
-        { title: "Assembleia 20/05", href: "/documentos/dce/atas/assembleia-20-05" },
-      ],
-      Ofícios: [
-        { title: "Ofício Reitoria", href: "/documentos/dce/oficios/reitoria" },
-      ]
-    }
-  },
+interface DocumentFile {
+  title: string;
+  href: string;
+}
+
+interface FolderData {
+  description: string;
+  subfolders: Record<string, DocumentFile[]>;
+}
+
+type DirectoryData = Record<string, FolderData>;
+
+const DIRECTORY_DATA: DirectoryData = {
   IFusp: {
-    description: "Pautas internas, atas e reivindicações do Instituto de Física.",
+    description: "Documentos, pautas e informações do Instituto de Física da USP.",
     subfolders: {
-      Pautas: [
-        { title: "Pauta Interna", href: "/documentos/ifusp/pautas/interna" },
+      "Comando de Greve": [
+        {
+          title: "Informações sobre a greve",
+          href: "/documentos/ifusp/comando-de-greve/informacoes-sobre-a-greve",
+        },
       ],
-      Informações: [
-        { title: "Aviso de Paralisação", href: "/documentos/ifusp/informacoes/aviso-paralisacao" },
-      ],
-      ATAS: [
-        { title: "Reunião Comando", href: "/documentos/ifusp/atas/reuniao-comando" },
-      ],
-      Ofícios: [
-        { title: "Ofício Direção", href: "/documentos/ifusp/oficios/direcao" },
-      ]
-    }
-  }
+    },
+  },
 };
 
-type MainFolder = keyof typeof MOCK_DATA;
-type SubFolder = 'Pautas' | 'Informações' | 'ATAS' | 'Ofícios';
+type MainFolder = string;
+type SubFolder = string;
 
 export function InteractiveDirectory() {
   const [selectedMain, setSelectedMain] = useState<MainFolder | null>(null);
   const [selectedSub, setSelectedSub] = useState<SubFolder | null>(null);
+
+  const mainFolders = Object.keys(DIRECTORY_DATA);
 
   const handleMainClick = (folder: MainFolder) => {
     if (selectedMain === folder) {
@@ -64,11 +54,27 @@ export function InteractiveDirectory() {
     setSelectedSub(selectedSub === sub ? null : sub);
   };
 
+  if (mainFolders.length === 0) {
+    return (
+      <div className="flex flex-col items-center justify-center py-16 px-8 border border-dashed border-gray-800 rounded-xl bg-[#121212]/30">
+        <div className="p-4 bg-gray-800/30 rounded-full mb-6">
+          <Inbox size={40} className="text-gray-600" />
+        </div>
+        <h3 className="text-lg font-semibold text-gray-400 mb-2">
+          Nenhum documento disponível ainda
+        </h3>
+        <p className="text-sm text-gray-600 text-center max-w-md">
+          Os documentos reais serão integrados em breve via banco de dados. Utilize a aba &quot;Enviar&quot; para submeter novos documentos.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col gap-8">
       {/* Main Folders */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {(Object.keys(MOCK_DATA) as MainFolder[]).map((key) => (
+        {mainFolders.map((key) => (
           <div 
             key={key}
             onClick={() => handleMainClick(key)}
@@ -96,10 +102,10 @@ export function InteractiveDirectory() {
               )}>{key}</h3>
             </div>
             <p className="text-gray-400 text-sm mb-6 flex-1">
-              {MOCK_DATA[key].description}
+              {DIRECTORY_DATA[key].description}
             </p>
             <div className="flex flex-wrap gap-2 mt-auto">
-              {Object.keys(MOCK_DATA[key].subfolders).map((sub) => (
+              {Object.keys(DIRECTORY_DATA[key].subfolders).map((sub) => (
                 <span key={sub} className="text-xs font-medium px-2 py-1 bg-gray-800/50 rounded-md text-gray-400">
                   {sub}
                 </span>
@@ -116,7 +122,7 @@ export function InteractiveDirectory() {
             Subpastas de {selectedMain}
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {(Object.keys(MOCK_DATA[selectedMain].subfolders) as SubFolder[]).map((sub) => {
+            {Object.keys(DIRECTORY_DATA[selectedMain].subfolders).map((sub) => {
               const isSelected = selectedSub === sub;
               const hasSelection = selectedSub !== null;
               
@@ -158,12 +164,12 @@ export function InteractiveDirectory() {
           </h2>
           
           <div className="flex flex-col gap-2">
-            {MOCK_DATA[selectedMain].subfolders[selectedSub].length === 0 ? (
+            {DIRECTORY_DATA[selectedMain].subfolders[selectedSub].length === 0 ? (
               <p className="text-gray-500 text-sm py-4 italic text-center border border-dashed border-gray-800 rounded-lg">
                 Nenhum arquivo nesta pasta.
               </p>
             ) : (
-              MOCK_DATA[selectedMain].subfolders[selectedSub].map((file, idx) => (
+              DIRECTORY_DATA[selectedMain].subfolders[selectedSub].map((file, idx) => (
                 <Link
                   key={idx}
                   href={file.href}

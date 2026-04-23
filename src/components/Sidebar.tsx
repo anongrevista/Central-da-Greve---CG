@@ -46,36 +46,11 @@ export function Sidebar() {
            <h3 className="text-xs font-semibold text-gray-500 mb-4 px-2 tracking-wider">DOCUMENTOS DO HUB</h3>
            
            <div className="flex flex-col gap-1">
-             <FolderItem title="DCE" defaultOpen>
-               <FolderItem title="Pautas">
-                 <FileItem title="Pauta Unificada" href="/documentos/dce/pautas/unificada" />
-                 <FileItem title="Reivindicações DCE" href="/documentos/dce/pautas/reivindicacoes" />
-               </FolderItem>
-               <FolderItem title="Informações">
-                 <FileItem title="Comunicado Greve Geral" href="/documentos/dce/informacoes/comunicado-greve" />
-               </FolderItem>
-               <FolderItem title="ATAS">
-                 <FileItem title="Assembleia 20/05" href="/documentos/dce/atas/assembleia-20-05" />
-               </FolderItem>
-               <FolderItem title="Ofícios">
-                 <FileItem title="Ofício Reitoria" href="/documentos/dce/oficios/reitoria" />
-               </FolderItem>
-             </FolderItem>
-             
-             <FolderItem title="IFusp" defaultOpen>
-               <FolderItem title="Pautas" defaultOpen>
-                 <FileItem title="Pauta Interna" href="/documentos/ifusp/pautas/interna" />
-               </FolderItem>
-               <FolderItem title="Informações">
-                 <FileItem title="Aviso de Paralisação" href="/documentos/ifusp/informacoes/aviso-paralisacao" />
-               </FolderItem>
-               <FolderItem title="ATAS">
-                 <FileItem title="Reunião Comando" href="/documentos/ifusp/atas/reuniao-comando" />
-               </FolderItem>
-               <FolderItem title="Ofícios">
-                 <FileItem title="Ofício Direção" href="/documentos/ifusp/oficios/direcao" />
-               </FolderItem>
-             </FolderItem>
+              <FolderItem title="IFusp" defaultOpen>
+                <FolderItem title="Comando de Greve" defaultOpen>
+                  <FileItem title="Informações sobre a greve" href="/documentos/ifusp/comando-de-greve/informacoes-sobre-a-greve" />
+                </FolderItem>
+              </FolderItem>
            </div>
         </div>
       </aside>
