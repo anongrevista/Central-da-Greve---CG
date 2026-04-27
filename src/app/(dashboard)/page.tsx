@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowRight, MessageSquare } from "lucide-react";
 import { SocialFeed } from "@/components/SocialFeed";
 import { Calendar } from "@/components/Calendar";
+import { PicketStatus } from "@/components/PicketStatus";
 
 export default function DashboardHome() {
   return (
@@ -78,6 +79,8 @@ export default function DashboardHome() {
               </Link>
             </div>
           </section>
+
+          <PicketStatus />
 
           <h2 className="text-xl font-bold text-white mb-6 uppercase tracking-wider text-sm text-gray-500">
             Documentos em destaque
