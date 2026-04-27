@@ -35,15 +35,11 @@ const DIRECTORY_DATA: DirectoryData = {
           href: "/documentos/ifusp/comando-de-greve/reuniao-direcao-ifusp",
         },
         {
-          title: "Reunião com Todos os Comandos de Greve",
+          title: "Reunião com o comando de greve geral da USP",
           href: "/documentos/ifusp/comando-de-greve/reuniao-todos-comandos",
         },
         {
-          title: "Reuniões Comando e Kaline",
-          href: "/documentos/ifusp/comando-de-greve/reunioes-comando-kaline",
-        },
-        {
-          title: "Documento de Assinatura (Kaline)",
+          title: "Documento de não perseguição que a kaline (diretora do IF assinou)",
           href: "/documentos/ifusp/comando-de-greve/documento-assinatura-kaline",
         },
         {
@@ -100,40 +96,6 @@ export function InteractiveDirectory() {
 
   return (
     <div className="flex flex-col gap-8">
-      {/* Root Level Documents */}
-      <div>
-        <h2 className="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider flex items-center gap-2">
-          <FileText size={16} className="text-primary" />
-          Documentos em Destaque
-        </h2>
-        <div className="grid grid-cols-1 gap-4">
-          <Link
-            href="/documentos/ifusp/comando-de-greve/informacoes-sobre-a-greve"
-            className="group flex items-center justify-between p-5 rounded-xl bg-gradient-to-r from-[#1a1f2e] to-[#121212] border border-primary/30 hover:border-primary transition-all hover:shadow-[0_0_20px_rgba(15,102,136,0.15)]"
-          >
-            <div className="flex items-center gap-4">
-              <div className="p-3 bg-primary/20 rounded-lg text-primary group-hover:bg-primary group-hover:text-white transition-all">
-                <FileText size={24} />
-              </div>
-              <div>
-                <span className="font-bold text-gray-100 group-hover:text-white transition-colors block">
-                  Informações sobre a greve
-                </span>
-                <span className="text-xs text-gray-500">Documento oficial do Comando de Greve — IFUSP</span>
-              </div>
-            </div>
-            <div className="flex items-center gap-2 text-primary font-bold text-sm opacity-0 group-hover:opacity-100 transition-all transform translate-x-2 group-hover:translate-x-0">
-              Ler Agora <ChevronRight size={18} />
-            </div>
-          </Link>
-        </div>
-      </div>
-
-      <div className="flex items-center gap-4 my-2">
-        <div className="h-px bg-gray-800 flex-1" />
-        <span className="text-[10px] uppercase font-bold text-gray-600 tracking-[0.2em]">Ou navegue pelas pastas</span>
-        <div className="h-px bg-gray-800 flex-1" />
-      </div>
 
       {/* Main Folders */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

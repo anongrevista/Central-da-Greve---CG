@@ -1,7 +1,7 @@
 import { TopBar } from "@/components/TopBar";
 import { notFound } from "next/navigation";
 import { Reference } from "@/components/ReferenceTooltip";
-import { FileCheck, Calendar, Users, PenTool, Link as LinkIcon } from "lucide-react";
+import { FileCheck, Calendar, Users, PenTool, Link as LinkIcon, AlertTriangle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 /**
@@ -60,15 +60,11 @@ const DOCUMENT_MAP: Record<string, { key: string; title: string }> = {
   },
   "ifusp/comando-de-greve/reuniao-todos-comandos": {
     key: "reuniao-todos-comandos",
-    title: "Reunião com Todos os Comandos de Greve",
-  },
-  "ifusp/comando-de-greve/reunioes-comando-kaline": {
-    key: "reunioes-comando-kaline",
-    title: "Reuniões Comando e Kaline",
+    title: "Reunião com o comando de greve geral da USP",
   },
   "ifusp/comando-de-greve/documento-assinatura-kaline": {
     key: "documento-assinatura-kaline",
-    title: "Documento de Assinatura (Kaline)",
+    title: "Documento de não perseguição que a kaline (diretora do IF assinou)",
   },
   "ifusp/comando-de-greve/o-que-e-o-comando": {
     key: "o-que-e-o-comando",
@@ -142,6 +138,13 @@ function ActivityItem({ date, children }: { date: string; children: React.ReactN
 }
 
 function InformacoesGreveContent() {
+  const references = [
+    { id: "1", title: "Como lidar com a aparição de influencers de direita", url: "/documentos/ifusp/comando-de-greve/influencers-de-direita" },
+    { id: "2", title: "Reunião com o comando de greve geral da USP", url: "/documentos/ifusp/comando-de-greve/reuniao-todos-comandos" },
+    { id: "3", title: "Reunião com a Direção do IFUSP", url: "/documentos/ifusp/comando-de-greve/reuniao-direcao-ifusp" },
+    { id: "4", title: "O que é o Comando de Greve", url: "/documentos/ifusp/comando-de-greve/o-que-e-o-comando" }
+  ];
+
   return (
     <>
       {/* Sumário */}
@@ -257,7 +260,7 @@ function InformacoesGreveContent() {
       <ul className="list-disc list-inside space-y-1.5 ml-4 mb-4">
         <BulletItem>Construção de bandejão poli/p3 (alunos da ver/fofito não tem tempo de bandejão)</BulletItem>
         <BulletItem>Desprivatização dos bandejões e equipe sem terceirizados</BulletItem>
-        <BulletItem>Café da manhã em todos os bandecos das 6h as 9h</BulletItem>
+        <BulletItem>Café da manhã em todos os bancos das 6h as 9h</BulletItem>
         <BulletItem>Vigilância sanitária constante</BulletItem>
         <BulletItem><Marked color="yellow">Jantar no domingo</Marked></BulletItem>
         <BulletItem><Marked color="yellow">Funcionar nos feriados</Marked></BulletItem>
@@ -370,7 +373,7 @@ function InformacoesGreveContent() {
         <div className="flex items-start gap-3 bg-secondary/10 rounded-lg p-4 border border-secondary/30">
           <span className="text-secondary text-lg mt-0.5">ℹ</span>
           <p className="text-gray-300 text-sm leading-relaxed">
-            <Marked color="gray">O calendário pode ser estendido, já está sendo debatido isso em outros institutos e já ocorreu em greves passadas;</Marked>
+            <Marked color="gray">O calendário pode ser estendido, já está sendo debatido isso em outros institutos até e já o ocorreu em greves passadas;</Marked>
           </p>
         </div>
       </div>
@@ -384,7 +387,7 @@ function InformacoesGreveContent() {
           <strong className="text-white">O Cefisma:</strong> é o CA da física e tem parte chave nisso tudo, visto que os CAs em geral representam os estudantes e seus interesses.
         </p>
         <p>
-          <strong className="text-white">O Comando de Greve:</strong> organiza a greve de seus respectivos institutos. O comando foi votado em assembleia e o de agora é formado por pessoas do Cefisma, da atlética, do HS, de coletivos, do DCE, do CRUSP e pessoas independentes, sendo bem plural.
+          <strong className="text-white">O Comando de Greve:</strong> organiza a greve de seus respectivos institutos, cada instituto que aderiu tem um comando e os diferentes comandos estão em contato constante. O comando foi votado em assembleia e o de agora é formado por pessoas do Cefisma, da atlética, do HS, de coletivos, do DCE, do CRUSP e pessoas independentes, sendo bem plural.
         </p>
         <p>
           <strong className="text-white">As Assembleias:</strong> são convocadas para tomadas de decisões. O comando e o Cefisma não decidem nada sozinhos; eles organizam as informações e as decisões chaves são tomadas por votação em assembleia.
@@ -399,16 +402,34 @@ function InformacoesGreveContent() {
         <BulletItem>Ocupando o espaço, e não ficando em casa</BulletItem>
         <BulletItem>Participando das atividades de greve divulgadas</BulletItem>
         <BulletItem>Ajudar nos cartazes e na exposição que pretendemos fazer</BulletItem>
-        <BulletItem><Marked color="gray">Não engajar com pessoas que aparecem para fazer vídeos sensacionalistas</Marked></BulletItem>
+        <BulletItem>
+          <Reference 
+            id="1" 
+            index={1} 
+            title="Como lidar com a aparição de influencers de direita" 
+            date="Guia de Conduta"
+            url="/documentos/ifusp/comando-de-greve/influencers-de-direita"
+          >
+            Não engajar com pessoas que aparecem para fazer vídeos sensacionalistas
+          </Reference>
+        </BulletItem>
       </ul>
 
       <SectionDivider />
 
       {/* 2.6 Reuniões e atividades */}
       <SubSectionTitle id="reunioes-atividades">2.6 Reuniões e atividades até agora</SubSectionTitle>
-      <ul className="space-y-4 mb-10">
+      <ul className="space-y-4 mb-16">
         <ActivityItem date="Dia 17">
-          <Marked color="gray">Assembleia geral do IFUSP, onde foi votado e aprovado a greve. E também eleito o comando de greve do IFUSP.</Marked>
+          <Reference 
+            id="4" 
+            index={4} 
+            title="O que é o Comando de Greve" 
+            date="17 de Outubro"
+            url="/documentos/ifusp/comando-de-greve/o-que-e-o-comando"
+          >
+            Assembleia geral do IFUSP, onde foi votado e aprovado a greve. E também eleito o comando de greve do IFUSP.
+          </Reference>
         </ActivityItem>
         <ActivityItem date="Dia 17">
           <Marked color="gray">Trancamento de todas as salas do IFUSP e ordens aos funcionários para que elas não fossem abertas e suas cadeiras usadas para piquetes, impedindo as aulas.</Marked>
@@ -417,9 +438,53 @@ function InformacoesGreveContent() {
           <Marked color="gray">Piquetes elaborados e manutenção da mobilização no instituto.</Marked>
         </ActivityItem>
         <ActivityItem date="Dia 24">
-          <Marked color="gray">Reunião dos comandos de greve da USP e reuniões com a direção do IFUSP.</Marked>
+          <Reference 
+            id="2" 
+            index={2} 
+            title="Reunião com o comando de greve geral da USP" 
+            date="24 de Outubro"
+            url="/documentos/ifusp/comando-de-greve/reuniao-todos-comandos"
+          >
+            Reunião dos comandos de greve da USP.
+          </Reference>
+        </ActivityItem>
+        <ActivityItem date="Dia 24">
+          <Reference 
+            id="3" 
+            index={3} 
+            title="Reunião com a Direção do IFUSP" 
+            date="24 de Outubro"
+            url="/documentos/ifusp/comando-de-greve/reuniao-direcao-ifusp"
+          >
+            Reuniões com a direção do IFUSP.
+          </Reference>
         </ActivityItem>
       </ul>
+
+      {/* Fontes Section */}
+      <div className="mt-16 pt-8 border-t border-gray-800">
+        <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
+          <LinkIcon size={20} className="text-primary" />
+          Fontes e Documentos Relacionados
+        </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {references.map((ref) => (
+            <a 
+              key={ref.id}
+              id={`ref-${ref.id}`}
+              href={ref.url}
+              className="flex items-center gap-4 p-4 rounded-xl bg-[#1a1f2e] border border-gray-700/50 hover:border-primary/50 hover:bg-[#1e2538] transition-all group scroll-mt-24"
+            >
+              <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-xs font-bold text-primary group-hover:bg-primary group-hover:text-white transition-all">
+                {ref.id}
+              </div>
+              <span className="text-sm text-gray-300 group-hover:text-white transition-colors">
+                {ref.title}
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
     </>
   );
 }
@@ -564,7 +629,7 @@ function OQueEComandoContent() {
         Seu papel é além de <Marked color="yellow">representar os estudantes</Marked> daquele espaço no período de greve também comandar a mesma das seguintes formas:
       </p>
 
-      <ul className="list-disc list-inside space-y-2 ml-4 mb-8">
+      <ul className="list-disc list-inside space-y-2 ml-4 mb-8 text-gray-300">
         <BulletItem>Organizar</BulletItem>
         <BulletItem>Dirigir o processo</BulletItem>
         <BulletItem>Mobilizar</BulletItem>
@@ -582,26 +647,26 @@ function LidarInfluencersContent() {
     <>
       <SectionTitle id="introducao-influencers">Protocolo de Conduta</SectionTitle>
       <p className="text-gray-300 leading-relaxed mb-6">
-        Com a infeliz realidade recente do aparecimento, cada vez mais comum, de políticos e &quot;influencers&quot; da extrema-direita nos espaços estudantis, cresce a necessidade de medidas comuns. A postura tem que ser <strong className="text-white">&quot;não dar palco para maluco&quot;</strong>.
+        Com a infeliz realidade recente do aparecimento, cada vez mais comum, de políticos e &quot;influencers&quot; da extrema-direita nos espaços estudantis, cresce a necessidade de medidas comuns a serem tomadas com essa possibilidade nos espaços ifuspianos. Na tentativa de usar a revolta estudantil como conteúdo para fortalecerem suas bases e suas redes sociais, fica claro que a postura tem que ser <strong className="text-white">&quot;não dar palco para maluco&quot;</strong>.
       </p>
 
       <p className="text-gray-300 leading-relaxed mb-6">
-        Fica claro que o conflito é o desejo deles. Dessa forma, é importante não só estarmos anteriormente munidos de argumentos para a tentativa de diálogo, mas também de artifícios para impossibilitar os desejos de conflito.
+        Como em quaisquer situações já enfrentadas nessa e em outras greves passadas, no primeiro contato, é primordial o diálogo para tentar mitigar o conflito. Apesar disso, ainda mais com o exemplo que tivemos anteriormente com o &quot;influencer&quot; Victor Ruiz e o vereador Lucas Pavanato, é claro que o conflito é o desejo deles. Dessa forma, é importante não só estarmos já anteriormente munidos de argumentos para a tentativa de diálogo, mas também de artifícios para impossibilitar os desejos de conflito de tais personagens políticos.
       </p>
 
       <SubSectionTitle id="medidas">Medidas a serem tomadas</SubSectionTitle>
       <div className="space-y-4 mb-10">
         <div className="flex gap-4 bg-[#1a1f2e] p-4 rounded-lg border border-gray-800">
           <div className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center text-secondary font-bold shrink-0">1</div>
-          <p className="text-gray-300 text-sm"><strong>Som Alto e Copyright:</strong> O uso de sons altos que impossibilitem a produção de conteúdo midiático dessas pessoas, com músicas com copyright (ex: músicas da Disney).</p>
+          <p className="text-gray-300 text-sm"><strong>Uso de Sons Altos:</strong> O uso de sons altos que impossibilitem a produção de conteúdo midiático dessas pessoas, com músicas com copyright (ex: músicas da Disney).</p>
         </div>
         <div className="flex gap-4 bg-[#1a1f2e] p-4 rounded-lg border border-gray-800">
           <div className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center text-secondary font-bold shrink-0">2</div>
-          <p className="text-gray-300 text-sm"><strong>Minimizar Interações:</strong> Tentar ao máximo minimizar interações e diálogos posteriores que já tomem posturas agressivas.</p>
+          <p className="text-gray-300 text-sm"><strong>Minimizar Interações:</strong> Tentar ao máximo minimizar interações e diálogos posteriores (que já tomem posturas agressivas).</p>
         </div>
         <div className="flex gap-4 bg-[#1a1f2e] p-4 rounded-lg border border-gray-800">
           <div className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center text-secondary font-bold shrink-0">3</div>
-          <p className="text-gray-300 text-sm"><strong>Piquete Humano:</strong> Caso seja necessário, realizar um piquete humano, formado por uma &quot;corrente&quot; de pessoas para impedir a passagem, especialmente ao espaço do piquete.</p>
+          <p className="text-gray-300 text-sm"><strong>Piquete Humano:</strong> Caso seja necessário, realizar um piquete humano, formado por uma &quot;corrente&quot; de pessoas para impedir a passagem dessas pessoas, especialmente ao espaço do piquete.</p>
         </div>
         <div className="flex gap-4 bg-[#1a1f2e] p-4 rounded-lg border border-gray-800 border-red-500/30 bg-red-900/10">
           <div className="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center text-red-500 font-bold shrink-0">!</div>
@@ -645,6 +710,16 @@ export default function DocumentoPage({ params }: { params: { slug: string[] } }
               {entry.title}
             </h1>
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary rounded-full mt-3" />
+          </div>
+
+          {/* Aviso de Elaboração */}
+          <div className="mb-10 p-4 bg-amber-500/5 border border-amber-500/20 rounded-2xl flex items-center gap-4 group hover:bg-amber-500/10 transition-all duration-300">
+            <div className="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+              <AlertTriangle className="text-amber-500" size={20} />
+            </div>
+            <p className="text-sm text-amber-200/60 leading-relaxed font-medium">
+              Este documento ainda está sendo elaborado pelo comando de greve e pode sofrer alterações.
+            </p>
           </div>
 
           {/* Conteúdo do documento */}
@@ -726,7 +801,7 @@ function ReunioesKalineContent() {
 function AssinaturaKalineContent() {
   return (
     <>
-      <SectionTitle id="documento-assinatura">Documento de Assinatura (Kaline)</SectionTitle>
+      <SectionTitle id="documento-assinatura">Documento de não perseguição que a kaline (diretora do IF assinou)</SectionTitle>
       <div className="bg-gray-900/50 border border-dashed border-gray-700 rounded-2xl p-12 flex flex-col items-center justify-center text-center">
         <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mb-6">
           <PenTool size={32} className="text-primary" />
@@ -783,17 +858,36 @@ function ReuniaoDirecaoIfuspContent() {
 function ReuniaoTodosComandosContent() {
   return (
     <>
-      <SectionTitle id="reuniao-comandos">Informações sobre a reunião com todos os comandos de greve</SectionTitle>
-      <div className="bg-[#1a1f2e] border border-gray-700/50 rounded-xl p-8 mb-8 flex flex-col items-center justify-center py-20 text-center">
-        <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-6">
-          <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-          </svg>
-        </div>
-        <h3 className="text-xl font-bold text-white mb-4">Documento em Elaboração</h3>
-        <p className="text-gray-400 max-w-md mx-auto">
-          As informações desta reunião estão sendo compiladas pelo Comando de Greve e serão publicadas em breve. 
-          Esta reunião visa a articulação de pautas gerais entre todos os institutos da USP em mobilização.
+      <SectionTitle id="reuniao-comandos">Informações sobre a reunião com o comando de greve geral da USP</SectionTitle>
+      <div className="bg-[#1a1f2e] border border-gray-700/50 rounded-xl p-8 mb-8">
+        <h3 className="text-xl font-bold text-white mb-6">Pontos principais e votações:</h3>
+        <ul className="space-y-6">
+          <BulletItem>
+            <strong className="text-primary block mb-1 uppercase text-xs tracking-widest">Representação na Reitoria</strong>
+            <p className="text-gray-300 leading-relaxed">
+              Votação de quais serão os comandos que terão representantes na reunião com o reitor na terça-feira.
+            </p>
+          </BulletItem>
+          
+          <BulletItem>
+            <strong className="text-primary block mb-1 uppercase text-xs tracking-widest">Quórum de Representantes</strong>
+            <p className="text-gray-300 leading-relaxed">
+              Votação de quantos serão os representantes enviados para a mesa de negociação.
+            </p>
+          </BulletItem>
+          
+          <BulletItem>
+            <strong className="text-primary block mb-1 uppercase text-xs tracking-widest">Próxima Reunião</strong>
+            <p className="text-gray-300 leading-relaxed">
+              Votação da próxima reunião do comando após a reunião de terça, agendada para a próxima quarta-feira.
+            </p>
+          </BulletItem>
+        </ul>
+      </div>
+      
+      <div className="bg-primary/5 border border-primary/20 rounded-xl p-6">
+        <p className="text-gray-400 text-sm italic">
+          Nota: Estas decisões foram tomadas de forma coletiva entre os comandos de greve presentes na reunião geral da USP.
         </p>
       </div>
     </>

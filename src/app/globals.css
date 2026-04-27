@@ -23,3 +23,15 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: '29LT Bukra', sans-serif;
 }
+
+@layer utilities {
+  @keyframes highlight-flash {
+    0% { background-color: rgba(241, 67, 67, 0.4); }
+    100% { background-color: transparent; }
+  }
+
+  .animate-highlight-flash {
+    animation: highlight-flash 2s ease-out forwards;
+    border-radius: 4px;
+  }
+}

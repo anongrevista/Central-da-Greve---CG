@@ -71,13 +71,31 @@ export default function DashboardHome() {
             <h2 className="text-xl font-bold text-white mb-6 uppercase tracking-wider text-sm text-gray-500 flex items-center gap-2">
               Calendário de Atividades
             </h2>
-            <Calendar limit={2} />
+            <Calendar limit={3} />
             <div className="mt-4">
               <Link href="/calendario" className="text-primary hover:text-primary/80 text-sm font-bold flex items-center gap-1 transition-colors">
                 Ver calendário completo <ArrowRight size={14} />
               </Link>
             </div>
           </section>
+
+          <h2 className="text-xl font-bold text-white mb-6 uppercase tracking-wider text-sm text-gray-500">
+            Documentos em destaque
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-16">
+            <Link 
+              href="/documentos/ifusp/comando-de-greve/informacoes-sobre-a-greve"
+              className="group p-6 rounded-2xl bg-gradient-to-br from-gray-800/40 to-gray-900/60 border border-gray-700/30 hover:border-primary/50 transition-all hover:shadow-[0_0_30px_rgba(15,102,136,0.15)] flex flex-col gap-3"
+            >
+              <div className="flex items-center justify-between">
+                <span className="text-[10px] font-black text-primary uppercase tracking-[0.2em]">Importante</span>
+                <ArrowRight size={16} className="text-gray-500 group-hover:text-primary transition-transform group-hover:translate-x-1" />
+              </div>
+              <h3 className="text-xl font-bold text-white group-hover:text-primary transition-colors">Informações sobre a greve</h3>
+              <p className="text-sm text-gray-400 leading-relaxed">Conquistas passadas, pautas atuais e guia de funcionamento da mobilização.</p>
+            </Link>
+          </div>
 
           <h2 className="text-xl font-bold text-white mb-6 uppercase tracking-wider text-sm text-gray-500">
             Navegar por Pastas
