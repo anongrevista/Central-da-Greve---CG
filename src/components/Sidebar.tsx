@@ -2,7 +2,7 @@
 
 import { useSidebarStore } from '@/store/useSidebarStore';
 import { cn } from '@/lib/utils';
-import { Folder, FileText, ChevronRight, ChevronDown, File, Home } from 'lucide-react';
+import { Folder, FileText, ChevronRight, ChevronDown, File, Home, Calendar as CalendarIcon, Instagram } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
@@ -38,17 +38,41 @@ export function Sidebar() {
         
         <div className="flex-1 overflow-y-auto px-4 pb-4">
            
-           <Link href="/" className="flex items-center gap-2 px-2 py-2 mb-6 rounded-md text-gray-300 hover:text-white hover:bg-gray-800/50 transition-colors">
+           <Link href="/" className="flex items-center gap-2 px-2 py-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-800/50 transition-colors">
              <Home size={18} className="shrink-0" />
              <span className="text-sm font-medium">Início</span>
+           </Link>
+
+           <Link href="/calendario" className="flex items-center gap-2 px-2 py-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-800/50 transition-colors">
+             <CalendarIcon size={18} className="shrink-0" />
+             <span className="text-sm font-medium">Calendário</span>
+           </Link>
+           
+           <Link href="/#social-feed" className="flex items-center gap-2 px-2 py-2 mb-6 rounded-md text-gray-300 hover:text-white hover:bg-gray-800/50 transition-colors">
+             <Instagram size={18} className="shrink-0" />
+             <span className="text-sm font-medium">Posts da Greve</span>
            </Link>
 
            <h3 className="text-xs font-semibold text-gray-500 mb-4 px-2 tracking-wider">DOCUMENTOS DO HUB</h3>
            
            <div className="flex flex-col gap-1">
+              <FileItem title="Apresentação do HUB da Greve" href="/documentos/apresentacao-do-hub-da-greve" />
+              
+              <div className="my-2 h-px bg-gray-800/50 mx-2" />
+
+              <FolderItem title="DCE">
+                <div className="text-xs text-gray-600 py-2 italic px-4">Nenhum documento disponível ainda</div>
+              </FolderItem>
+
               <FolderItem title="IFusp" defaultOpen>
                 <FolderItem title="Comando de Greve" defaultOpen>
                   <FileItem title="Informações sobre a greve" href="/documentos/ifusp/comando-de-greve/informacoes-sobre-a-greve" />
+                  <FileItem title="Reunião com a Direção do IFUSP" href="/documentos/ifusp/comando-de-greve/reuniao-direcao-ifusp" />
+                  <FileItem title="Reunião com Todos os Comandos de Greve" href="/documentos/ifusp/comando-de-greve/reuniao-todos-comandos" />
+                  <FileItem title="Reuniões Comando e Kaline" href="/documentos/ifusp/comando-de-greve/reunioes-comando-kaline" />
+                  <FileItem title="Documento de Assinatura (Kaline)" href="/documentos/ifusp/comando-de-greve/documento-assinatura-kaline" />
+                  <FileItem title="O que é o Comando de Greve" href="/documentos/ifusp/comando-de-greve/o-que-e-o-comando" />
+                  <FileItem title="Como lidar com influencers de direita" href="/documentos/ifusp/comando-de-greve/influencers-de-direita" />
                 </FolderItem>
               </FolderItem>
            </div>

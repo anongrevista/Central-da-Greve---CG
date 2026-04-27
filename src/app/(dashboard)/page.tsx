@@ -1,5 +1,9 @@
 import { TopBar } from "@/components/TopBar";
 import { InteractiveDirectory } from "@/components/InteractiveDirectory";
+import Link from "next/link";
+import { ArrowRight, MessageSquare } from "lucide-react";
+import { SocialFeed } from "@/components/SocialFeed";
+import { Calendar } from "@/components/Calendar";
 
 export default function DashboardHome() {
   return (
@@ -37,11 +41,43 @@ export default function DashboardHome() {
               <p className="text-lg text-gray-400 max-w-2xl leading-relaxed mb-4">
                 A greve de 2016, que durou quase 3 meses, foi fundamental: graças a ela tivemos as cotas e o Enem-USP. Já a greve de 2023, que durou um mês e meio, teve como resultado a contratação de novos professores.
               </p>
-              <p className="text-lg text-gray-400 max-w-2xl leading-relaxed">
+              <p className="text-lg text-gray-400 max-w-2xl leading-relaxed mb-6">
                 As greves são importantes e tentam se organizar para não atrapalhar os estudos, tendo mais informações sobre a greve atual nas pastas a seguir.
               </p>
+
+              <div className="flex flex-wrap gap-4">
+                <Link 
+                  href="/documentos/apresentacao-do-hub-da-greve"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-bold hover:shadow-[0_0_20px_rgba(15,102,136,0.4)] transition-all transform hover:-translate-y-0.5 active:scale-95 group"
+                >
+                  Ver Apresentação do HUB
+                  <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+                </Link>
+
+                <a 
+                  href="https://chat.whatsapp.com/BAKYXhrnPwxDeYaSCDw0Fr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-green-600 hover:bg-green-500 text-white font-bold hover:shadow-[0_0_20px_rgba(22,163,74,0.4)] transition-all transform hover:-translate-y-0.5 active:scale-95 group"
+                >
+                  <MessageSquare size={18} />
+                  Entrar no grupo da mobilização
+                </a>
+              </div>
             </div>
           </div>
+
+          <section className="mb-16">
+            <h2 className="text-xl font-bold text-white mb-6 uppercase tracking-wider text-sm text-gray-500 flex items-center gap-2">
+              Calendário de Atividades
+            </h2>
+            <Calendar limit={2} />
+            <div className="mt-4">
+              <Link href="/calendario" className="text-primary hover:text-primary/80 text-sm font-bold flex items-center gap-1 transition-colors">
+                Ver calendário completo <ArrowRight size={14} />
+              </Link>
+            </div>
+          </section>
 
           <h2 className="text-xl font-bold text-white mb-6 uppercase tracking-wider text-sm text-gray-500">
             Navegar por Pastas
@@ -49,8 +85,11 @@ export default function DashboardHome() {
 
           <InteractiveDirectory />
 
+          <SocialFeed />
+
         </div>
       </div>
     </div>
   );
 }
+

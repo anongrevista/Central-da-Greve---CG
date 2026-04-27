@@ -1,0 +1,33 @@
+import { TopBar } from "@/components/TopBar";
+import { Calendar } from "@/components/Calendar";
+
+export default function CalendarioPage() {
+  return (
+    <div className="flex flex-col min-h-screen">
+      <TopBar />
+      
+      <main className="flex-1 overflow-hidden px-8 max-w-5xl mx-auto w-full pt-12 pb-32">
+        <header className="mb-12">
+          <h1 className="text-4xl font-black tracking-tight mb-4 text-white">
+            <span className="text-primary">Calendário</span>
+            <span className="text-gray-400 font-medium text-3xl"> de </span>
+            <span className="text-secondary">Atividades</span>
+          </h1>
+          <p className="text-lg text-gray-400 max-w-2xl leading-relaxed">
+            Acompanhe prazos acadêmicos, assembleias e mobilizações do Comando de Greve.
+          </p>
+        </header>
+
+        <Calendar />
+        
+        {/* Placeholder for Empty State */}
+        <div className="mt-12 p-8 border border-dashed border-gray-800 rounded-2xl bg-gray-900/30 text-center">
+          <p className="text-gray-500 text-sm italic">
+            Novos eventos são adicionados conforme as decisões das assembleias.
+          </p>
+        </div>
+      </main>
+    </div>
+  );
+}
+
