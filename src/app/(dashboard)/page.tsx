@@ -48,7 +48,7 @@ export default function DashboardHome() {
 
               <div className="flex flex-wrap gap-4">
                 <Link 
-                  href="/documentos/apresentacao-do-hub-da-greve"
+                  href="/documentos/apresentacao-da-central-da-greve"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-bold hover:shadow-[0_0_20px_rgba(15,102,136,0.4)] transition-all transform hover:-translate-y-0.5 active:scale-95 group"
                 >
                   Ver Apresentação da Central

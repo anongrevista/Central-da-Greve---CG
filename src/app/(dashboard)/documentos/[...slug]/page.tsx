@@ -49,8 +49,8 @@ const DOCUMENT_MAP: Record<string, { key: string; title: string }> = {
     key: "informacoes-sobre-a-greve",
     title: "Informações sobre a greve",
   },
-  "apresentacao-do-hub-da-greve": {
-    key: "apresentacao-do-hub",
+  "apresentacao-da-central-da-greve": {
+    key: "apresentacao-da-central",
     title: "Apresentação da Central da Greve (CG)",
   },
   "ifusp/comando-de-greve/reuniao-direcao-ifusp": {
@@ -494,7 +494,7 @@ function ApresentacaoCentralContent() {
       {/* Imagem de Capa */}
       <div className="relative w-full aspect-video md:aspect-[21/9] mb-8 rounded-2xl overflow-hidden border border-gray-800 bg-[#09090b] flex items-center justify-center">
         <img 
-          src="/assets/apresentacao-hub.jpg" 
+          src="/assets/apresentacao-da-central.jpg" 
           alt="Apresentação Central" 
           className="object-contain w-full h-full p-4"
         />
@@ -722,7 +722,7 @@ export default function DocumentoPage({ params }: { params: { slug: string[] } }
 
           {/* Conteúdo do documento */}
           {entry.key === "informacoes-sobre-a-greve" && <InformacoesGreveContent />}
-          {entry.key === "apresentacao-do-hub" && <ApresentacaoCentralContent />}
+          {entry.key === "apresentacao-da-central" && <ApresentacaoCentralContent />}
           {entry.key === "reuniao-direcao-ifusp" && <ReuniaoDirecaoIfuspContent />}
           {entry.key === "reuniao-todos-comandos" && <ReuniaoTodosComandosContent />}
           {entry.key === "reunioes-comando-kaline" && <ReunioesKalineContent />}

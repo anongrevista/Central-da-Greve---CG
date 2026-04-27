@@ -68,7 +68,7 @@ export function Sidebar() {
            <h3 className="text-xs font-semibold text-gray-500 mb-4 px-2 tracking-wider">DOCUMENTOS DA CENTRAL</h3>
            
            <div className="flex flex-col gap-1">
-              <FileItem title="Apresentação da Central da Greve" href="/documentos/apresentacao-do-hub-da-greve" />
+              <FileItem title="Apresentação da Central da Greve" href="/documentos/apresentacao-da-central-da-greve" />
               
               <div className="my-2 h-px bg-gray-800/50 mx-2" />
 
