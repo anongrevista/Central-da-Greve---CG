@@ -1,7 +1,11 @@
 {
-  "name": "hub-da-greve",
+  "name": "central-da-greve-cg",
   "version": "1.0.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anongrevista/Central-da-Greve---CG.git"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
