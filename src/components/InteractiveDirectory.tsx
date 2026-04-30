@@ -22,9 +22,7 @@ export const DIRECTORY_DATA: DirectoryData = {
     description: "Documentos gerais, apresentações e glossário.",
     subfolders: {
       "Geral": [
-        { title: "Apresentação da Central da Greve", href: "/documentos/apresentacao-da-central-da-greve" },
-        { title: "Glossário da greve", href: "/documentos/central-da-greve/geral/glossario" },
-        { title: "READ-ME", href: "/documentos/central-da-greve/geral/read-me" }
+        { title: "Apresentação da Central da Greve", href: "/documentos/apresentacao-da-central-da-greve" }
       ]
     }
   },

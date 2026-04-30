@@ -5,6 +5,7 @@ import { SocialFeed } from "@/components/SocialFeed";
 import { Calendar } from "@/components/Calendar";
 import { PicketStatus } from "@/components/PicketStatus";
 import { PicketSituation } from "@/components/PicketSituation";
+import { FAQ } from "@/components/FAQ";
 
 export default function DashboardHome() {
   return (
@@ -12,7 +13,19 @@ export default function DashboardHome() {
       
       <div className="flex flex-1 min-w-0 overflow-hidden px-4 sm:px-8 max-w-5xl mx-auto w-full pt-6 sm:pt-12">
         <div className="flex-1 min-w-0 overflow-y-auto overflow-x-hidden pr-2 sm:pr-8 pb-24 sm:pb-32">
-          
+
+          {/* ⚠️ AVISO DE REVISÃO */}
+          <div className="mb-8 flex items-start gap-4 p-5 rounded-2xl bg-red-950/60 border-2 border-red-500/70 shadow-[0_0_30px_rgba(239,68,68,0.25)]">
+            <span className="text-3xl shrink-0 mt-0.5">🚨</span>
+            <div>
+              <p className="text-red-400 font-black text-lg uppercase tracking-wide mb-1">
+                Documentos em revisão — não compartilhe este link
+              </p>
+              <p className="text-red-300/80 text-sm leading-relaxed">
+                Os documentos desta plataforma <strong className="text-red-300">ainda não foram finalizados</strong> e estão passando por revisão. Por favor, <strong className="text-red-300">não compartilhe este link</strong> até que a versão final seja liberada.
+              </p>
+            </div>
+          </div>
           <div className="mb-12 space-y-8">
             <div>
               <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4 text-white break-words">
@@ -75,8 +88,8 @@ export default function DashboardHome() {
             Documentos em destaque
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-            {/* Card 1 - A Semana Decisiva (Secondary/Red) — CEFISMA */}
+          <div className="mb-16">
+            {/* Card - A Semana Decisiva (Secondary/Red) — CEFISMA */}
             <Link 
               href="/documentos/ifusp/cefisma/a-semana-decisiva-da-greve"
               className="group relative p-6 rounded-3xl bg-gradient-to-br from-[#231a1a] to-[#121212] border border-secondary/20 hover:border-secondary/60 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(241,67,67,0.2)] overflow-hidden flex flex-col gap-4"
@@ -95,27 +108,9 @@ export default function DashboardHome() {
                 <p className="text-sm text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">Agenda, posição do Cefisma e como participar desta semana crucial para o movimento.</p>
               </div>
             </Link>
-
-            {/* Card 2 - Apresentação (Primary/Blue) */}
-            <Link 
-              href="/documentos/apresentacao-da-central-da-greve"
-              className="group relative p-6 rounded-3xl bg-gradient-to-br from-[#1a202c] to-[#121212] border border-primary/20 hover:border-primary/60 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(15,102,136,0.2)] overflow-hidden flex flex-col gap-4"
-            >
-              <div className="absolute bottom-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-all duration-500"></div>
-              
-              <div className="flex items-center justify-between relative z-10">
-                <span className="px-3 py-1 rounded-full bg-primary/20 border border-primary/30 text-[10px] font-black text-primary uppercase tracking-widest drop-shadow-md">Apresentação</span>
-                <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500">
-                  <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
-                </div>
-              </div>
-              
-              <div className="mt-2 relative z-10">
-                <h3 className="text-xl font-black text-white group-hover:text-primary transition-colors mb-2 leading-tight">Apresentação da Central da Greve</h3>
-                <p className="text-sm text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">O que é a Central da Greve, como funciona e por que ela é necessária para o movimento.</p>
-              </div>
-            </Link>
           </div>
+
+          <FAQ />
 
           <h2 className="text-xl font-bold text-white mb-6 uppercase tracking-wider text-sm text-gray-500">
             Navegar por Pastas

@@ -4,31 +4,12 @@ import { useState } from "react";
 import { Instagram, Play, ExternalLink, Heart, MessageCircle, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const SOCIAL_POSTS = [
-  {
-    id: "1",
-    thumbnail: "/assets/instagram_post_1.png",
-    caption: "@cefisma: Calendário de Greve - Semana 2. Confira a programação completa das atividades.",
-    likes: "1.2k",
-    comments: "45",
-    link: "https://www.instagram.com/p/DXqLqyDlMX6/"
-  },
-  {
-    id: "3",
-    thumbnail: "/assets/instagram_post_1.png",
-    caption: "@cefisma: Informes da Mobilização.",
-    likes: "1.5k",
-    comments: "30",
-    link: "https://www.instagram.com/p/DXp6ZVpjBgm/"
-  },
-  {
-    id: "2",
-    thumbnail: "/assets/instagram_post_2.png",
-    caption: "@cefisma: Mobilização Permanente: Unidade na luta pelas pautas estudantis.",
-    likes: "2.1k",
-    comments: "89",
-    link: "https://www.instagram.com/p/DXQR5O6DCUT/"
-  }
+const SOCIAL_POSTS: { id: string; link: string }[] = [
+  { id: "5", link: "https://www.instagram.com/reel/DXuPlbujgJQ/" },
+  { id: "6", link: "https://www.instagram.com/reel/DXuhCxvDjG2/" },
+  { id: "2", link: "https://www.instagram.com/p/DXvS7tnjAe9/" },
+  { id: "3", link: "https://www.instagram.com/p/DXraMl5DiUs/" },
+  { id: "4", link: "https://www.instagram.com/p/DXp6ZVpjBgm/" },
 ];
 
 

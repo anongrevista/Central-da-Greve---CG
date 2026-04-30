@@ -63,17 +63,19 @@ const rawEvents: TimelineEvent[] = [
     title: "Reunião Reitoria",
     description: "Comandos com o reitor.",
   },
-  // Wednesday
-  {
-    dateObj: new Date("2026-04-29T00:00:00"),
-    title: "Comandos Gerais",
-    description: "Reunião dos comandos gerais.",
-  },
-  // Thursday
+  // Wednesday - TODAY
   {
     dateObj: new Date("2026-04-30T00:00:00"),
-    title: "Assembleia Geral",
-    description: "Assembleia geral do IF.",
+    time: "14:00",
+    title: "Assembleia Geral IF",
+    description: "Assembleia Geral do Instituto de Física.",
+  },
+  // Monday
+  {
+    dateObj: new Date("2026-05-04T00:00:00"),
+    time: "18:00",
+    title: "Assembleia Geral IF",
+    description: "Abraão de Morais.",
   },
 ];
 
